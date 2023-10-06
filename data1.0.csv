@@ -1,6 +1,4 @@
-﻿City,Countryregion,Name,"Service
-opened","Last
-expanded",Stations,Systemlength,"Annual ridership
+﻿City,CountryRegion,Name,"ServiceOpened","LastExpanded",Stations,SystemLength,"Annual ridership
 (millions)"
 Algiers,Algeria,Algiers Metro,2011,2018,19,18.5,45.3 (2019)
 Buenos Aires,Argentina,Buenos Aires Underground,1913,2019,78,56.7,74.0 (2020)
