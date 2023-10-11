@@ -1,0 +1,53 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "height": 400,
+    "width": 600,
+    "title": "Change of GDP Per Capita By Continents",
+    "data": {"url": "https://raw.githubusercontent.com/grant1119/fit3179/main/Countries.csv"},
+    "layer": [
+      {
+        "mark": "line",
+        "encoding": {
+          "x": {
+            "timeUnit": {"unit": "year"},
+            "field": "Year",
+            "type": "temporal",
+            "title": "Year"
+          },
+          "y": {
+            "aggregate": "mean", 
+            "field": "GDP_Per_Capita", 
+            "type": "quantitative", 
+            "title": "Avg GDP Per Capita"
+          },
+          "color": {"field": "Continent", "type": "nominal"},
+          "tooltip": [
+            {"field": "Continent", "type": "nominal", "title": "Continent"},
+            {"timeUnit": {"unit": "year"}, "field": "Year", "type": "temporal", "title": "Year"},
+            {"aggregate": "mean", "field": "GDP_Per_Capita", "type": "quantitative", "title": "Avg GDP Per Capita"}
+          ]
+        }
+      },
+      {
+        "mark": {"type": "point", "opacity": 1, "filled": true},
+        "encoding": {
+          "x": {
+            "timeUnit": {"unit": "year"},
+            "field": "Year",
+            "type": "temporal"
+          },
+          "y": {
+            "aggregate": "mean", 
+            "field": "GDP_Per_Capita", 
+            "type": "quantitative"
+          },
+          "color": {"field": "Continent", "type": "nominal"},
+          "tooltip": [
+            {"field": "Continent", "type": "nominal", "title": "Continent"},
+            {"timeUnit": {"unit": "year"}, "field": "Year", "type": "temporal", "title": "Year"},
+            {"aggregate": "mean", "field": "GDP_Per_Capita", "type": "quantitative", "title": "Avg GDP Per Capita", "format": ".2f"}
+          ]
+        }
+      }
+    ]
+  }
