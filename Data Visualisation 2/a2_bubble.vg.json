@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "height": 400,
-    "width": 600,
+    "width": 550,
     "title": "GDP vs Population",
     "data": {
       "url": "https://raw.githubusercontent.com/grant1119/fit3179/main/Countries.csv"
@@ -84,6 +84,7 @@
       "size": {
           "field": "GDP_Per_Capita",
           "type": "quantitative",
+          "title": "GDP Per Capita",
           "scale": {
               "type": "threshold",
               "domain": [1000, 2500, 5000, 10000, 25000, 50000],
