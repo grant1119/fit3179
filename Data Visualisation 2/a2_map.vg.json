@@ -1,8 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "World Bank Data on Countries",
-    "width": 600,
     "height": 400,
+    "width": 650,
     "projection": {
         "type": "equalEarth"
     },
