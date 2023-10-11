@@ -1,0 +1,59 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "height": 400,
+    "width": 400,
+    "title": "Population Distribution By Continents in 2022",
+    "data": {
+      "url": "https://raw.githubusercontent.com/grant1119/fit3179/main/Countries.csv"
+    },
+    "transform": [
+      {"filter": "datum.Year == 2022"},
+      {
+        "aggregate": [
+          {"op": "sum", "field": "Population", "as": "TotalPopulation"}
+        ],
+        "groupby": ["Continent"]
+      },
+      {
+        "window": [{"op": "sum", "field": "TotalPopulation", "as": "GlobalPopulation"}],
+        "frame": [null, null]
+      },
+      {
+        "calculate": "(datum.TotalPopulation / datum.GlobalPopulation) * 100",
+        "as": "Percentage"
+      }
+    ],
+    "layer": [
+      {
+        "mark": {"type": "arc", "tooltip": true},
+        "encoding": {
+          "theta": {
+            "field": "TotalPopulation",
+            "type": "quantitative",
+            "stack": "normalize"
+          },
+          "color": {
+            "field": "Continent",
+            "type": "nominal",
+            "scale": {"type": "log"}
+          },
+          "tooltip": [
+            {"field": "Continent", "type": "nominal", "title": "Continent"},
+            {"field": "TotalPopulation", "type": "quantitative", "title": "Total Population"},
+            {"field": "Percentage", "type": "quantitative", "title": "Percentage", "format": ".2f"}
+          ]
+        }
+      },
+      {
+        "mark": {"type": "text", "radiusOffset": -5},
+        "encoding": {
+          "theta": {
+            "field": "TotalPopulation",
+            "type": "quantitative",
+            "stack": "normalize"
+          }
+        }
+      }
+    ]
+  }
+  
