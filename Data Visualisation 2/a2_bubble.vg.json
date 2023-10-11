@@ -1,0 +1,102 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "height": 500,
+    "width": 600,
+    "title": "GDP vs Population",
+    "data": {
+      "url": "https://raw.githubusercontent.com/grant1119/fit3179/main/Countries.csv"
+    },
+    "params": [
+      {
+        "name": "GDP_Above",
+        "value": 0,
+        "bind": {
+          "input": "range",
+          "min": 0,
+          "max": 100000,
+          "step": 1000,
+          "name": "GDP Per Capita: "
+        }
+      },
+      {
+        "name": "Continent_selection",
+        "bind": {
+          "input": "select",
+          "options": [
+            null,
+            "Asia",
+            "Europe",
+            "Africa",
+            "North America",
+            "South America",
+            "Oceania"
+          ],
+          "labels": [
+            "Show All",
+            "Asia",
+            "Europe",
+            "Africa",
+            "North America",
+            "South America",
+            "Oceania"
+          ],
+          "name": "Continent Selection: "
+        }
+      }
+    ],
+    "transform": [
+      {"filter": "datum.Population > 0"},
+      {"filter": "datum.GDP > 0"},
+      {"filter": "datum.Year > 2021"},
+      {"filter": "datum.GDP_Per_Capita > GDP_Above"},
+      {"filter": "Continent_selection == null || datum.Continent == Continent_selection"}
+      ],
+    "mark": "circle",
+    "encoding": {
+      "x": {
+        "field": "Population",
+        "type": "quantitative",
+        "title":"Population",
+        "axis": {"tickCount": 7},
+        "scale": {"type": "log",  "domain":[1000, 10000000000]}
+      },
+      "y": {
+        "field": "GDP",
+        "type": "quantitative",
+        "axis": { "tickCount": 7},
+        "scale": {"type": "log", "domain":[10000000, 100000000000000]}
+      },
+      "color": {
+          "field": "Continent",
+          "type": "nominal",
+          "scale": {
+              "domain": [
+              "Asia",
+              "Europe",
+              "Africa",
+              "North America",
+              "South America",
+              "Oceania"
+              ]
+          }
+      },
+      "opacity": {"value": 0.6},
+      "size": {
+          "field": "GDP_Per_Capita",
+          "type": "quantitative",
+          "scale": {
+              "type": "threshold",
+              "domain": [1000, 2500, 5000, 10000, 25000, 50000],
+              "range": [10, 20, 40, 80, 160, 320, 640]
+            },
+            "legend": {"format": ".1s"}
+      },
+      "tooltip": [
+          {"field": "Country", "type": "nominal", "title": "Country"},
+          {"field": "Year", "type": "quantitative", "title": "Year"},
+          {"field": "GDP", "type": "quantitative", "title": "GDP","format": ","},
+          {"field": "Population", "type": "quantitative", "title": "Population","format": ","},
+          {"field": "GDP_Per_Capita", "type": "quantitative", "title": "GDP Per Capita","format": ".2f"}
+          ]
+    }
+  }
