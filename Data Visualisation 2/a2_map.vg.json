@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "World Bank Data on Countries",
+    "title": "GDP of Each Country",
     "height": 400,
     "width": 650,
     "projection": {
