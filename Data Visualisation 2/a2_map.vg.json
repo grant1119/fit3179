@@ -1,8 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "GDP of Each Country",
+    "title": "GDP By Country in 2022",
+    "width":680,
     "height": 400,
-    "width": 650,
     "projection": {
         "type": "equalEarth"
     },
@@ -18,7 +18,7 @@
                     "url": "https://raw.githubusercontent.com/grant1119/fit3179/main/Countries.csv"
                 },
                 "key": "Country",
-                "fields": ["Country", "GDP","Year","Population","GDP_Per_Capita","Land","Continent"]
+                "fields": ["Country", "GDP", "Year", "Population", "GDP_Per_Capita", "Land", "Continent"]
             }
         },
         {"calculate": "datum.GDP + 0.1", "as": "GDP1"}
@@ -29,7 +29,7 @@
         "color": {
             "field": "GDP",
             "type": "quantitative",
-            "scale": {"type": "log"}
+            "scale": {"type": "log", "scheme": "lightgreyteal"}
         },
         "tooltip": [
             {"field": "Country", "type": "nominal", "title": "Country"},
