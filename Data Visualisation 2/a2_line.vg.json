@@ -2,7 +2,7 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "height": 400,
     "width": 600,
-    "title": "Change of GDP Per Capita By Continents",
+    "title": "Change of GDP Per Capita since 2000",
     "data": {"url": "https://raw.githubusercontent.com/grant1119/fit3179/main/Countries.csv"},
     "layer": [
       {
